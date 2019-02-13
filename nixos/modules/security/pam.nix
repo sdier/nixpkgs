@@ -112,7 +112,11 @@ let
           description = ''
             If set, use the Duo Security pam module
             <literal>pam_duo</literal> for authentication.  Requires
+<<<<<<< HEAD
             configuration of <literal>duo-unix</literal> package options.
+=======
+            configuration of <literal>security.dusosec</literal> options.
+>>>>>>> d86bd22bb90... nixos/security: Add duo-unix support to pam.
           '';
         };
       };
@@ -331,9 +335,11 @@ let
                 ("auth optional ${pkgs.plasma5.kwallet-pam}/lib/security/pam_kwallet5.so" +
                  " kwalletd=${pkgs.libsForQt5.kwallet.bin}/bin/kwalletd5")}
               ${optionalString cfg.enableGnomeKeyring
-                ("auth optional ${pkgs.gnome3.gnome-keyring}/lib/security/pam_gnome_keyring.so")}
+                "auth optional ${pkgs.gnome3.gnome-keyring}/lib/security/pam_gnome_keyring.so"}
               ${optionalString cfg.googleAuthenticator.enable
-                  "auth required ${pkgs.googleAuthenticator}/lib/security/pam_google_authenticator.so no_increment_hotp"}
+                "auth required ${pkgs.googleAuthenticator}/lib/security/pam_google_authenticator.so no_increment_hotp"}
+              ${optionalString cfg.duoSecurity.enable
+                "auth required ${pkgs.duo-unix}/lib/security/pam_duo.so"}
             '') + ''
           ${optionalString cfg.unixAuth
               "auth sufficient pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} likeauth try_first_pass"}
