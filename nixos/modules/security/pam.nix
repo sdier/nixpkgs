@@ -320,8 +320,9 @@ let
             || cfg.pamMount
             || cfg.enableKwallet
             || cfg.enableGnomeKeyring
-            || cfg.googleAuthenticator.enable)) ''
-              auth required pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} likeauth
+            || cfg.googleAuthenticator.enable
+            || cfg.duoSecurity.enable)) ''
+              auth requisite pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} likeauth
               ${optionalString config.security.pam.enableEcryptfs
                 "auth optional ${pkgs.ecryptfs}/lib/security/pam_ecryptfs.so unwrap"}
               ${optionalString cfg.pamMount
