@@ -105,6 +105,18 @@ let
         '';
       };
 
+      duoSecurity = {
+        enable = mkOption {
+          default = false;
+          type = types.bool;
+          description = ''
+            If set, use the Duo Security pam module
+            <literal>pam_duo</literal> for authentication.  Requires
+            configuration of <literal>duo-unix</literal> package options.
+          '';
+        };
+      };
+
       startSession = mkOption {
         default = false;
         type = types.bool;
