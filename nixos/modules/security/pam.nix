@@ -354,7 +354,7 @@ let
             || cfg.enableGnomeKeyring
             || cfg.googleAuthenticator.enable
             || cfg.duoSecurity.enable)) ''
-              auth required pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} likeauth
+              auth requisite pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} likeauth
               ${optionalString config.security.pam.enableEcryptfs
                 "auth optional ${pkgs.ecryptfs}/lib/security/pam_ecryptfs.so unwrap"}
               ${optionalString cfg.pamMount
