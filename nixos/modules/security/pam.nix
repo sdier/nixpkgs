@@ -112,11 +112,7 @@ let
           description = ''
             If set, use the Duo Security pam module
             <literal>pam_duo</literal> for authentication.  Requires
-<<<<<<< HEAD
-            configuration of <literal>duo-unix</literal> package options.
-=======
             configuration of <literal>security.dusosec</literal> options.
->>>>>>> d86bd22bb90... nixos/security: Add duo-unix support to pam.
           '';
         };
       };
