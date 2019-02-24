@@ -138,7 +138,7 @@ let
           description = ''
             If set, use the Duo Security pam module
             <literal>pam_duo</literal> for authentication.  Requires
-            configuration of <literal>duo-unix</literal> package options.
+            configuration of <literal>security.dusosec</literal> options.
           '';
         };
       };
