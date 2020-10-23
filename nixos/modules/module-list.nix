@@ -762,6 +762,7 @@
   ./services/networking/icecream/scheduler.nix
   ./services/networking/icecream/daemon.nix
   ./services/networking/inspircd.nix
+  ./services/networking/igmpproxy.nix
   ./services/networking/iodine.nix
   ./services/networking/iperf3.nix
   ./services/networking/ircd-hybrid/default.nix
