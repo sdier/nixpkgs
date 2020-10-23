@@ -39,6 +39,7 @@ in {
     systemd.services.igmpproxy = {
       description = "igmpproxy Multicast Router Daemon";
       wantedBy = [ "multi-user.target" ];
+      wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
       serviceConfig = {
         ExecStart = "@${pkgs.igmpproxy}/bin/igmpproxy igmpproxy -n ${confFile}";
