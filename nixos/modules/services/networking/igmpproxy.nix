@@ -15,6 +15,10 @@ in {
           Whether to enable a simple multicast router
           (<command>igmpproxy</command>), which is able to route multicast
           across network interfaces using IGMP forwarding.
+
+          If you experience issues with igmpproxy starting at boot, set
+          <option>networking.dhcpcd.wait</option> to "both" to delay the
+          <literal>network-online.target</literal> from being reached early.
         '';
     };
 
@@ -39,7 +43,6 @@ in {
     systemd.services.igmpproxy = {
       description = "igmpproxy Multicast Router Daemon";
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
       serviceConfig = {
         ExecStart = "@${pkgs.igmpproxy}/bin/igmpproxy igmpproxy -n ${confFile}";
